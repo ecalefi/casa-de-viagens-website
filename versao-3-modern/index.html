@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de Viagens | Corporate Travel Solutions</title>
+    <meta name="description" content="Soluções corporativas de viagens com excelência em gestão, economia e experiência. Há 25 anos cuidando de cada detalhe.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Hero Section - Modern Split */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        }
+        
+        /* Grid pattern */
+        .grid-pattern {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        
+        /* Accent underline */
+        .accent-line {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .accent-line::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        /* Service cards - Modern cards */
+        .service-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            transition: height 0.3s ease;
+        }
+        
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        /* Destination cards */
+        .dest-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            group: true;
+        }
+        
+        .dest-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .dest-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .dest-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        
+        .dest-card .content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px;
+            color: white;
+            z-index: 2;
+        }
+        
+        .dest-card .price-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.5);
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 14px 28px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            padding: 14px 28px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Stats */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Navigation */
+        .nav-link {
+            color: rgba(255,255,255,0.7);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Scroll animations */
+        .slide-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .slide-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Feature grid icons */
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        /* Form inputs */
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--dark);
+            z-index: 100;
+            padding: 80px 24px;
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        /* Testimonial */
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                    </div>
+                    <span class="text-white font-display text-lg font-semibold tracking-tight">CASA DE VIAGENS</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#sobre" class="nav-link text-sm">Sobre</a>
+                    <a href="#servicos" class="nav-link text-sm">Serviços</a>
+                    <a href="#destinos" class="nav-link text-sm">Destinos</a>
+                    <a href="#contato" class="nav-link text-sm">Contato</a>
+                    <a href="#contato" class="btn-primary text-sm">Solicitar Proposta</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="absolute top-6 right-6 text-white" onclick="toggleMobileMenu()">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="#sobre" class="text-white text-2xl font-display" onclick="toggleMobileMenu()">Sobre</a>
+        <a href="#servicos" class="text-white text-2xl font-display" onclick="toggleMobileMenu()">Serviços</a>
+        <a href="#destinos" class="text-white text-2xl font-display" onclick="toggleMobileMenu()">Destinos</a>
+        <a href="#contato" class="text-white text-2xl font-display" onclick="toggleMobileMenu()">Contato</a>
+        <a href="#contato" class="btn-primary" onclick="toggleMobileMenu()">Solicitar Proposta</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="grid-pattern"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-0 flex items-center relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+                <div>
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full mb-8">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-white/80 text-sm">Atendimento 24/7 disponível</span>
+                    </div>
+                    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                        Viaje com<br>
+                        <span class="accent-line">excelência</span>
+                    </h1>
+                    <p class="text-white/70 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
+                        Soluções inteligentes de viagens corporativas e experiências exclusivas. 25 anos cuidando de cada detalhe da sua jornada.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#contato" class="btn-primary text-center">
+                            Começar Agora
+                        </a>
+                        <a href="#servicos" class="btn-secondary text-center">
+                            Ver Serviços
+                        </a>
+                    </div>
+                    
+                    <!-- Trust badges -->
+                    <div class="flex items-center gap-8 mt-12 pt-12 border-t border-white/10">
+                        <div>
+                            <p class="text-3xl font-bold text-white">500+</p>
+                            <p class="text-white/50 text-sm">Empresas Atendidas</p>
+                        </div>
+                        <div class="w-px h-12 bg-white/20"></div>
+                        <div>
+                            <p class="text-3xl font-bold text-white">25</p>
+                            <p class="text-white/50 text-sm">Anos de Mercado</p>
+                        </div>
+                        <div class="w-px h-12 bg-white/20"></div>
+                        <div>
+                            <p class="text-3xl font-bold text-white">98%</p>
+                            <p class="text-white/50 text-sm">Satisfação</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden lg:block relative">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80" 
+                             alt="Viagem premium" 
+                             class="rounded-2xl shadow-2xl w-full h-[500px] object-cover">
+                        <!-- Floating card -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">IATA Certified</p>
+                                    <p class="text-slate-500 text-sm">Agência Credenciada</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Stats floating card -->
+                        <div class="absolute -top-4 -right-4 bg-gradient-to-br from-indigo-500 to-purple-600 p-4 rounded-xl text-white">
+                            <p class="text-2xl font-bold">50K+</p>
+                            <p class="text-white/80 text-xs">Viagens/ano</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="slide-up">
+                    <span class="text-indigo-600 font-semibold text-sm tracking-wide uppercase">Nossos Serviços</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 mt-4">
+                        Soluções completas para sua viagem
+                    </h2>
+                </div>
+                <div class="slide-up">
+                    <p class="text-slate-600 text-lg">
+                        Da concepção à execução, oferecemos uma experiência completa de viagem com suporte dedicado, tecnologia de ponta e parcerias estratégicas mundiais.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service 1 -->
+                <div class="service-card slide-up">
+                    <div class="icon-box bg-indigo-100 mb-6">
+                        <svg class="w-7 h-7 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-3">Viagens Corporativas</h3>
+                    <p class="text-slate-600 mb-4">
+                        Gestão completa com plataforma online, políticas de viagem e relatórios gerenciais.
+                    </p>
+                    <a href="#contato" class="text-indigo-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        Saiba mais
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card slide-up">
+                    <div class="icon-box bg-pink-100 mb-6">
+                        <svg class="w-7 h-7 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-3">Pacotes Românticos</h3>
+                    <p class="text-slate-600 mb-4">
+                        Lua de mel dos sonhos e destinos exclusivos para casais em locais paradisíacos.
+                    </p>
+                    <a href="#contato" class="text-indigo-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        Saiba mais
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card slide-up">
+                    <div class="icon-box bg-emerald-100 mb-6">
+                        <svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-3">Viagens em Família</h3>
+                    <p class="text-slate-600 mb-4">
+                        Roteiros personalizados para todas as idades com diversão e conforto.
+                    </p>
+                    <a href="#contato" class="text-indigo-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        Saiba mais
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card slide-up">
+                    <div class="icon-box bg-amber-100 mb-6">
+                        <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-3">Destinos Exóticos</h3>
+                    <p class="text-slate-600 mb-4">
+                        Experiências únicas em destinos exclusivos ao redor do mundo.
+                    </p>
+                    <a href="#contato" class="text-indigo-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        Saiba mais
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card slide-up">
+                    <div class="icon-box bg-blue-100 mb-6">
+                        <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-3">Locação de Veículos</h3>
+                    <p class="text-slate-600 mb-4">
+                        Frota premium mundial com seguro completo e suporte 24 horas.
+                    </p>
+                    <a href="#contato" class="text-indigo-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        Saiba mais
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card slide-up">
+                    <div class="icon-box bg-red-100 mb-6">
+                        <svg class="w-7 h-7 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-slate-900 mb-3">Seguro Viagem</h3>
+                    <p class="text-slate-600 mb-4">
+                        Cobertura completa para sua tranquilidade em qualquer destino.
+                    </p>
+                    <a href="#contato" class="text-indigo-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+                        Saiba mais
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="slide-up order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" 
+                             alt="Praia" 
+                             class="rounded-2xl h-64 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80" 
+                             alt="Montanha" 
+                             class="rounded-2xl h-64 object-cover w-full mt-8">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80" 
+                             alt="Resort" 
+                             class="rounded-2xl h-64 object-cover w-full">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" 
+                             alt="Cidade" 
+                             class="rounded-2xl h-64 object-cover w-full mt-8">
+                    </div>
+                </div>
+                <div class="slide-up order-1 lg:order-2">
+                    <span class="text-indigo-600 font-semibold text-sm tracking-wide uppercase">Sobre Nós</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
+                        25 anos de excelência em viagens
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        Desde 1999, a <strong>Casa de Viagens</strong> é referência em soluções de viagem para empresas e famílias. Nossa expertise garante experiências únicas com atendimento personalizado.
+                    </p>
+                    <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                        Com certificação IATA e parcerias estratégicas mundiais, oferecemos as melhores condições em passagens, hospedagem e serviços complementares.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-slate-700">Atendimento personalizado 24/7</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-slate-700">Parcerias com as melhores cias aéreas</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-slate-700">Tecnologia de ponta em gestão de viagens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinos" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 slide-up">
+                <span class="text-indigo-600 font-semibold text-sm tracking-wide uppercase">Destinos</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 mt-4">
+                    Explore o mundo conosco
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Destination 1 -->
+                <div class="dest-card h-80 slide-up">
+                    <span class="price-tag">A partir de R$ 8.990</span>
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=800&q=80" 
+                         alt="Paris" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <p class="text-indigo-300 text-sm font-medium">França</p>
+                        <h3 class="text-2xl font-display font-semibold">Paris</h3>
+                        <p class="text-white/70 text-sm mt-1">7 noites com café da manhã</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 2 -->
+                <div class="dest-card h-80 slide-up">
+                    <span class="price-tag">A partir de R$ 15.990</span>
+                    <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80" 
+                         alt="Maldivas" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <p class="text-indigo-300 text-sm font-medium">Oceano Índico</p>
+                        <h3 class="text-2xl font-display font-semibold">Maldivas</h3>
+                        <p class="text-white/70 text-sm mt-1">Resort all-inclusive 5*</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 3 -->
+                <div class="dest-card h-80 slide-up">
+                    <span class="price-tag">A partir de R$ 12.490</span>
+                    <img src="https://images.unsplash.com/photo-1534113414509-0eec2bfb493f?auto=format&fit=crop&w=800&q=80" 
+                         alt="Itália" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <p class="text-indigo-300 text-sm font-medium">Itália</p>
+                        <h3 class="text-2xl font-display font-semibold">Costa Amalfitana</h3>
+                        <p class="text-white/70 text-sm mt-1">10 noites em boutique hotel</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 4 -->
+                <div class="dest-card h-80 slide-up">
+                    <span class="price-tag">A partir de R$ 9.990</span>
+                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80" 
+                         alt="Dubai" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <p class="text-indigo-300 text-sm font-medium">Emirados Árabes</p>
+                        <h3 class="text-2xl font-display font-semibold">Dubai</h3>
+                        <p class="text-white/70 text-sm mt-1">5 noites hotel luxo</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 5 -->
+                <div class="dest-card h-80 slide-up">
+                    <span class="price-tag">A partir de R$ 3.990</span>
+                    <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80" 
+                         alt="Rio de Janeiro" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <p class="text-indigo-300 text-sm font-medium">Brasil</p>
+                        <h3 class="text-2xl font-display font-semibold">Rio de Janeiro</h3>
+                        <p class="text-white/70 text-sm mt-1">5 noites frente ao mar</p>
+                    </div>
+                </div>
+                
+                <!-- Destination 6 -->
+                <div class="dest-card h-80 slide-up">
+                    <span class="price-tag">A partir de R$ 11.990</span>
+                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" 
+                         alt="Japão" 
+                         class="w-full h-full object-cover">
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <p class="text-indigo-300 text-sm font-medium">Japão</p>
+                        <h3 class="text-2xl font-display font-semibold">Tóquio</h3>
+                        <p class="text-white/70 text-sm mt-1">12 noites com tours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-24 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6 slide-up">
+                Pronto para sua próxima viagem?
+            </h2>
+            <p class="text-white/70 text-lg mb-10 slide-up">
+                Nossa equipe de especialistas está pronta para criar a experiência perfeita para você ou sua empresa.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 slide-up">
+                <a href="#contato" class="btn-primary">
+                    Solicitar Proposta
+                </a>
+                <a href="tel:+5561999999999" class="btn-secondary flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    (61) 9999-9999
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="slide-up">
+                    <span class="text-indigo-600 font-semibold text-sm tracking-wide uppercase">Contato</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 mt-4 mb-6">
+                        Fale conosco
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-10">
+                        Entre em contato para uma proposta personalizada. Respondemos em até 24 horas.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900">Endereço</h4>
+                                <p class="text-slate-600 text-sm">SCS Quadra 4, Bloco A, Sala 501<br>Brasília - DF, 70304-000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900">Telefone</h4>
+                                <p class="text-slate-600 text-sm">(61) 3333-4444<br>(61) 99999-9999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+                            <div class="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900">E-mail</h4>
+                                <p class="text-slate-600 text-sm">contato@casadeviagens.com.br<br>corporativo@casadeviagens.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="slide-up">
+                    <form class="bg-slate-50 p-8 rounded-2xl">
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-slate-700 text-sm font-medium mb-2">Nome</label>
+                                <input type="text" class="form-input" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label class="block text-slate-700 text-sm font-medium mb-2">Empresa</label>
+                                <input type="text" class="form-input" placeholder="Nome da empresa">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-slate-700 text-sm font-medium mb-2">E-mail</label>
+                                <input type="email" class="form-input" placeholder="seu@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-slate-700 text-sm font-medium mb-2">Telefone</label>
+                                <input type="tel" class="form-input" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-slate-700 text-sm font-medium mb-2">Serviço de Interesse</label>
+                            <select class="form-input">
+                                <option>Selecione uma opção</option>
+                                <option>Viagem Corporativa</option>
+                                <option>Pacote de Viagem</option>
+                                <option>Viagem para Casal</option>
+                                <option>Viagem em Família</option>
+                                <option>Locação de Veículo</option>
+                                <option>Seguro de Viagem</option>
+                                <option>Hospedagem</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-slate-700 text-sm font-medium mb-2">Mensagem</label>
+                            <textarea rows="4" class="form-input resize-none" placeholder="Descreva sua necessidade..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full">
+                            Enviar Solicitação
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                            </svg>
+                        </div>
+                        <span class="text-white font-display text-lg font-semibold">CASA DE VIAGENS</span>
+                    </div>
+                    <p class="text-slate-400 text-sm">
+                        25 anos de excelência em viagens corporativas e experiências exclusivas.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Serviços</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Viagens Corporativas</a></li>
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Pacotes de Viagem</a></li>
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Locação de Veículos</a></li>
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Seguro de Viagem</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Institucional</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Sobre Nós</a></li>
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Termos de Uso</a></li>
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-slate-400 text-sm hover:text-indigo-400 transition-colors">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-6">Redes Sociais</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between">
+                <p class="text-slate-500 text-sm">
+                    © 2024 Casa de Viagens. Todos os direitos reservados.
+                </p>
+                <p class="text-slate-500 text-sm mt-4 md:mt-0">
+                    IATA Certified | ABIH Associate
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+        
+        // Scroll animations
+        function reveal() {
+            const elements = document.querySelectorAll('.slide-up');
+            elements.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', reveal);
+        reveal();
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
