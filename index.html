@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa de Viagens - Escolha uma Versão</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .version-card {
+            transition: all 0.3s ease;
+        }
+        .version-card:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div class="container mx-auto px-4 py-16">
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6">
+                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-white/80 text-sm">Proposta de Website</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-4">
+                Casa de Viagens
+            </h1>
+            <p class="text-xl text-white/60 max-w-2xl mx-auto">
+                Escolha uma das 3 versões abaixo para visualizar a proposta completa
+            </p>
+        </div>
+
+        <!-- Version Cards -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Version 1 - Luxury -->
+            <a href="./versao-1-luxury/index.html" class="version-card block">
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-white/10">
+                    <div class="h-48 bg-gradient-to-br from-[#0a1a2f] to-[#1a2a3f] flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-[#d4af37] to-[#b8860b] rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold text-white">CV</span>
+                            </div>
+                            <span class="text-[#d4af37] font-semibold">Luxury Editorial</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Versão 1 - Luxury</h3>
+                        <p class="text-white/60 text-sm mb-4">
+                            Sofisticado e elegante com paleta Navy/Gold. Ideal para transmitir exclusividade.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-[#0a1a2f]/50 text-[#d4af37] text-xs rounded-full">Navy</span>
+                            <span class="px-3 py-1 bg-[#0a1a2f]/50 text-[#d4af37] text-xs rounded-full">Gold</span>
+                            <span class="px-3 py-1 bg-[#0a1a2f]/50 text-[#d4af37] text-xs rounded-full">Premium</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Version 2 - Tropical -->
+            <a href="./versao-2-tropical/index.html" class="version-card block">
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-white/10">
+                    <div class="h-48 bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-xl flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </div>
+                            <span class="text-white font-semibold">Tropical Paradise</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Versão 2 - Tropical</h3>
+                        <p class="text-white/60 text-sm mb-4">
+                            Vibrante e acolhedor com paleta Teal/Emerald. Ideal para aventura e destinos paradisíacos.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs rounded-full">Teal</span>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs rounded-full">Emerald</span>
+                            <span class="px-3 py-1 bg-orange-500/20 text-orange-400 text-xs rounded-full">Vibrante</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Version 3 - Modern -->
+            <a href="./versao-3-modern/index.html" class="version-card block">
+                <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden border border-white/10">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur rounded-lg flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </div>
+                            <span class="text-white font-semibold">Modern Corporate</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Versão 3 - Modern</h3>
+                        <p class="text-white/60 text-sm mb-4">
+                            Clean e tech-forward com paleta Indigo/Pink. Ideal para corporativo B2B.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-indigo-500/20 text-indigo-400 text-xs rounded-full">Indigo</span>
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-400 text-xs rounded-full">Pink</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">Tech</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-16 text-white/40 text-sm">
+            <p>Casa de Viagens • Agência de Viagens Corporativa</p>
+            <p class="mt-2">Há mais de 25 anos realizando sonhos</p>
+        </div>
+    </div>
+</body>
+</html>
